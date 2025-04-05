@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: elasticsearch-reactive-demo
+
+# Elasticsearch properties will be dynamically overridden by testcontainers
+elasticsearch:
+  uris: http://localhost:9200
+  index:
+    name: test-products
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.example.elasticsearchreactivedemo: DEBUG
+    org.testcontainers: DEBUG

@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: elasticsearch-reactive-demo
+
+elasticsearch:
+  uris: http://localhost:9200 # Default, will be overridden in tests
+  username: elastic
+  password: changeme
+  index:
+    name: products
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.example.elasticsearchreactivedemo: DEBUG
+    # Enable this for low-level Elasticsearch client logging if needed
+    # co.elastic.clients: TRACE
