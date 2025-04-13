@@ -6,7 +6,7 @@ spring:
     name: elasticsearch-reactive-demo
 
 elasticsearch:
-  uris: http://localhost:9200 # Default, will be overridden in tests
+  uris: https://localhost:9200 # Default, will be overridden in tests
   username: elastic
   password: changeme
   index:

@@ -151,4 +151,18 @@ public class ProductService {
         .subscribeOn(Schedulers.boundedElastic()) // Offload blocking IO call
         .then(); // Convert to Mono<Void> on success
     }
+
+    public Mono<Void> deleteAllProducts() {
+        return Mono.fromCallable(() -> {
+            log.debug("Deleting all documents from index: {}", indexName);
+            esClient.deleteByQuery(d -> d
+                .index(indexName)
+                .query(q -> q.matchAll(m -> m))
+                .refresh(true)
+            );
+            return null;
+        })
+        .subscribeOn(Schedulers.boundedElastic())
+        .then();
+    }
 }

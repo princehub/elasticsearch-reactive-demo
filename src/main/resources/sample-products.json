@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Laptop",
+    "description": "High-performance laptop",
+    "price": 1200.99,
+    "category": "Electronics",
+    "tags": ["computer", "portable", "technology"]
+  },
+  {
+    "id": "2",
+    "name": "Smartphone",
+    "description": "Latest model smartphone",
+    "price": 799.49,
+    "category": "Electronics",
+    "tags": ["phone", "mobile", "technology"]
+  },
+  {
+    "id": "3",
+    "name": "Coffee Maker",
+    "description": "Automatic coffee maker",
+    "price": 89.99,
+    "category": "Home Appliances",
+    "tags": ["kitchen", "coffee", "appliance"]
+  }
+]

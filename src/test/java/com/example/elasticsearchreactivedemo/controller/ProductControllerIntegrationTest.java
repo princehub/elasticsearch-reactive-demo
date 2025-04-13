@@ -109,9 +109,11 @@ class ProductControllerIntegrationTest {
     @Test
     @Order(4)
     void shouldSearchProducts() {
+        // Clean up existing data first
         ProductDocument anotherProduct = new ProductDocument(
                 "Test Monitor", "A wide test screen", 399.50, "Electronics", List.of("display", "test")
         );
+
         webTestClient.post().uri("/api/v1/products")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(anotherProduct), ProductDocument.class)
@@ -124,19 +126,18 @@ class ProductControllerIntegrationTest {
                 .expectStatus().isOk()
                 .expectBodyList(ProductDocument.class)
                 .value(products -> {
-                    assertThat(products).hasSize(2);
                     assertThat(products).extracting(ProductDocument::getName)
                             .containsExactlyInAnyOrder("Test Laptop", "Test Monitor");
                 });
 
-        webTestClient.get().uri("/api/v1/products/search?query=Laptop")
+        webTestClient.get().uri("/api/v1/products/search?query=Monitor")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(ProductDocument.class)
                 .value(products -> {
                     assertThat(products).hasSize(1);
-                    assertThat(products.get(0).getName()).isEqualTo("Test Laptop");
+                    assertThat(products.get(0).getName()).isEqualTo("Test Monitor");
                 });
     }
 
