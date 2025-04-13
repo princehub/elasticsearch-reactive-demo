@@ -1,5 +1,6 @@
 package com.example.elasticsearchreactivedemo.service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -34,6 +35,15 @@ public class ProductService {
 
     @Value("${elasticsearch.index.name}")
     private String indexName;
+
+    // save multiple products
+    public Mono<ProductDocument> saveProducts(List<ProductDocument> products) {
+        // write method content
+        return Flux.fromIterable(products)
+                .flatMap(this::saveProduct)
+                .last();
+
+    }
 
     // Save or update a product. Generates ID if null.
     public Mono<ProductDocument> saveProduct(ProductDocument product) {

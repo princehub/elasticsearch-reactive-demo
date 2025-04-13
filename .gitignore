@@ -1,9 +1,14 @@
 # Compiled class file
 *.class
-
+# vscode files
+.vscode/
 # macOS system files
 .DS_Store
 # Target folder
+.idea/
+# IntelliJ IDEA
+*.iml
+# Gradle files  
 .gradle/
 build/
 target/
