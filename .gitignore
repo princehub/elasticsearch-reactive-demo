@@ -1,6 +1,12 @@
 # Compiled class file
 *.class
 
+# macOS system files
+.DS_Store
+# Target folder
+.gradle/
+build/
+target/
 # Log file
 *.log
 
